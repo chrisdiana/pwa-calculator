@@ -17,6 +17,16 @@ const FILES_TO_CACHE = [
   'img/icons/favicon.ico',
   'img/icons/mstile-150x150.png',
   'img/icons/safari-pinned-tab.svg',
+  'img/splash/iphone5_splash.png',
+  'img/splash/iphone6_splash.png',
+  'img/splash/iphoneplus_splash.png',
+  'img/splash/iphonex_splash.png',
+  'img/splash/iphonexr_splash.png',
+  'img/splash/iphonexsmax_splash.png',
+  'img/splash/ipad_splash.png',
+  'img/splash/ipadpro1_splash.png',
+  'img/splash/ipadpro3_splash.png',
+  'img/splash/ipadpro2_splash.png',
 ];
 
 // Install service worker and cache all content
