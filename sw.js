@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_NAME = 'static-cache-v0.1.0';
+const CACHE_NAME = 'static-cache-v0.2';
 const FILES_TO_CACHE = [
   'index.html',
   'app.js',
@@ -43,5 +43,16 @@ self.addEventListener('fetch', e => e.respondWith(
         return res;
       })
     })
+  })
+));
+
+// Clean up old caches
+self.addEventListener('activate', e => e.waitUntil(
+  caches.keys().then((keyList) => {
+      return Promise.all(keyList.map((key) => {
+      if(CACHE_NAME.indexOf(key) === -1) {
+        return caches.delete(key);
+      }
+    }));
   })
 ));
