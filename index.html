@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  
+  <title>Calculator</title>
+  
+  <meta name="description" content="Calculator">
+  <meta name="application-name" content="Calculator">
+  <meta name="author" content="chrisdiana">
+  <meta name="cpwa" content="Calculator">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Calculator">
+  <meta name="msapplication-TileColor" content="#f5923e">
+  <meta name="msapplication-config" content="/img/icons/browserconfig.xml">
+  <meta name="theme-color" content="#f5923e">
+  <meta property="og:image" content="/img/icons/android-chrome-512x512.png">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/img/icons/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/img/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/img/icons/favicon-16x16.png">
+  <link rel="mask-icon" href="/img/icons/safari-pinned-tab.svg" color="#f5923e">
+  <link rel="shortcut icon" type="image/x-icon" href="/img/icons/favicon.ico">
+  
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" type="text/css" href="/style.css">
+</head>
+<body>
+  
+ <div class="calculator">
+   <a id="calc-set-theme" href="#">✎</a>
+    
+    <div class="calc-buttons">
+      <div id="calc-display" class="calc-display"></div>
+      <button class="calc-btn sp">AC</button>
+      <button class="calc-btn sp">C</button>
+      <button class="calc-btn sp">±</button>
+      <button class="calc-btn op">÷</button>
+
+      <button class="calc-btn nm">7</button>
+      <button class="calc-btn nm">8</button>
+      <button class="calc-btn nm">9</button>
+      <button class="calc-btn op">×</button>
+
+      <button class="calc-btn nm">4</button>
+      <button class="calc-btn nm">5</button>
+      <button class="calc-btn nm">6</button>
+      <button class="calc-btn op">-</button>
+
+      <button class="calc-btn nm">1</button>
+      <button class="calc-btn nm">2</button>
+      <button class="calc-btn nm">3</button>
+      <button class="calc-btn op">+</button>
+
+      <button class="calc-btn wide nm">0</button>
+      <button class="calc-btn nm">.</button>
+      <button class="calc-btn op">=</button>
+    </div>
+  </div>
+
+  
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span id="close-modal" class="modal-close">&times;</span>
+      <h3>
+        Select a theme
+      </h3>
+      <div class="radio" id="theme-select">
+        
+         <div>
+          <input type="radio" id="apple" name="color" value="apple" onclick="setTheme('apple')">
+          <label for="apple">
+            <span class="apple">
+              <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/check-icn.svg" alt="Checked Icon" />
+            </span>
+          </label>
+        </div>
+        
+        <div>
+          <input type="radio" id="bubblegum" name="color" value="bubblegum" onclick="setTheme('bubblegum')">
+          <label for="bubblegum">
+            <span class="bubblegum">
+              <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/check-icn.svg" alt="Checked Icon" />
+            </span>
+          </label>
+        </div>
+
+        <div>
+          <input type="radio" id="pink-pastel" name="color" onclick="setTheme('pink-pastel')" value="pink-pastel">
+          <label for="pink-pastel">
+            <span class="pink-pastel">
+              <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/check-icn.svg" alt="Checked Icon" />
+            </span>
+          </label>
+        </div>
+
+        <div>
+          <input type="radio" id="unicorn" name="color" onclick="setTheme('unicorn')" value="unicorn">
+          <label for="unicorn">
+            <span class="unicorn">
+              <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/check-icn.svg" alt="Checked Icon" />
+            </span>
+          </label>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+
+  <script src="/calculator.js" defer></script>
+  <script src="/app.js" defer></script>
+</body>
+</html>
