@@ -7,7 +7,7 @@ var Calculator = function(displayId, inputClass) {
   this.fractionExp = 0;
   this.displayEl = document.getElementById(displayId);
   this.btnEls = document.querySelectorAll('.' + inputClass);
-  this.map = {
+  this.keyMap = {
     'C': 'clear',
     'AC': 'allClear',
     '×': 'multiply',
@@ -20,76 +20,67 @@ var Calculator = function(displayId, inputClass) {
 };
 
 Calculator.prototype = {
-  add: function() {
-    this.calculate();
+  add: function() { 
     this.operation = function(a, b) { return a + b; };
-    this.currentDisplay = this.current;
+    this.calculate();
     this.current = 0;
-    this.fractionExp = 0;
   },
   subtract: function() {
-    this.calculate();
     this.operation = function(a, b) { return a - b; };
-    this.currentDisplay = this.current;
+    this.calculate();
     this.current = 0;
-    this.fractionExp = 0;
   },
   multiply: function() {
-    this.calculate();
     this.operation = function(a, b) { return a * b; };
-    this.currentDisplay = this.current;
+    this.calculate();
     this.current = 0;
-    this.fractionExp = 0;
   },
   divide: function() {
-    this.calculate();
     this.operation = function(a, b) { return a / b; };
-    this.currentDisplay = this.current;
+    this.calculate();
     this.current = 0;
-    this.fractionExp = 0; 
+  },
+  equals: function() {
+    this.calculate();
+    this.operation = null;
+    this.current = 0;
+  },
+  calculate: function() {
+    if(this.operation) {
+      this.total = this.operation(this.total, this.current);
+    } 
+    // if (this.operation) {
+    //   this.total = this.operation(this.total, this.current);
+    // } else {
+    //   this.total = this.current;
+    // }
+    this.updateDisplay(this.total);
   },
   clear: function() {
     this.current = 0;
     this.fractionExp = 0;
     this.currentDisplay = 0;
-    this.updateDisplay();
+    this.updateDisplay(this.current);
   },
   allClear: function() {
     this.clear();
     this.total = 0;
     this.operation = null;
   },
-  calculate: function() {
-    if (this.operation) {
-      this.total = this.operation(this.total, this.current);
-    } else {
-      this.total = this.current;
-    }
-    this.currentDisplay = this.total;
-    this.updateDisplay();
-  },
-  equals: function() {
-    this.calculate();
-  },
   digit: function(number) {
-    var num = null;
     if (this.fractionExp) {
-      num = this.current + (number / Math.pow(10, this.fractionExp));
-      this.current = num;
+      this.current = this.current + (number / Math.pow(10, this.fractionExp));
       this.fractionExp = this.fractionExp + 1;
-      //this.setCurrentDisplay(num);
     } else {           
-      num = (this.current * 10) + number; 
-      this.current = num;
-      //this.setCurrentDisplay(num);
+      this.current = (this.current * 10) + number;
     }
-    this.currentDisplay = this.current;
-    this.updateDisplay();
+    this.updateDisplay(this.current);
   },
   point: function() {
     this.fractionExp = 1;
   },
-  updateDisplay: function() {
+  updateDisplay: function(value) {
+    this.currentDisplay = value;
     this.displayEl.innerText = this.currentDisplay;
   },
   initEvents: function() {
@@ -99,7 +90,7 @@ Calculator.prototype = {
         var raw = event.target.innerText;
         var number = parseInt(raw, 10);
         if (isNaN(number)) {
-          calc[calc.map[raw]]();
+          calc[calc.keyMap[raw]]();
         } else {
           calc.digit(number);
         }
