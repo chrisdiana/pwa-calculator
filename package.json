@@ -1,0 +1,19 @@
+{
+  "name": "pwa-calculator",
+  "version": "0.1.0",
+  "description": "A Progressive Web App Calculator",
+  "author": "Chris Diana",
+  "main": "index.html",
+  "scripts": {
+    "start": "hs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:chrisdiana/pwa-calculator.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chrisdiana/pwa-calculator/issues"
+  },
+  "homepage": "https://github.com/chrisdiana/pwa-calculator#readme"
+}
