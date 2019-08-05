@@ -1,7 +1,9 @@
 var Calculator = function(displayId, inputClass) {
   this.total = 0;
   this.current = 0;
+  this.currentDisplay = 0;
   this.operation = null;
+  this.lastOperation = null;
   this.fractionExp = 0;
   this.displayEl = document.getElementById(displayId);
   this.btnEls = document.querySelectorAll('.' + inputClass);
@@ -19,38 +21,43 @@ var Calculator = function(displayId, inputClass) {
 
 Calculator.prototype = {
   add: function() {
-      this.calculate();
-      this.operation = function(a, b) { return a + b; };
-      this.setCurrent(0, "");
-      this.fractionExp = 0;
+    this.calculate();
+    this.operation = function(a, b) { return a + b; };
+    this.currentDisplay = this.current;
+    this.current = 0;
+    this.fractionExp = 0;
   },
   subtract: function() {
-      this.calculate();
-      this.operation = function(a, b) { return a - b; };
-      this.setCurrent(0, "");
-      this.fractionExp = 0;
+    this.calculate();
+    this.operation = function(a, b) { return a - b; };
+    this.currentDisplay = this.current;
+    this.current = 0;
+    this.fractionExp = 0;
   },
   multiply: function() {
-      this.calculate();
-      this.operation = function(a, b) { return a * b; };
-      this.setCurrent(0, "");
-      this.fractionExp = 0;
+    this.calculate();
+    this.operation = function(a, b) { return a * b; };
+    this.currentDisplay = this.current;
+    this.current = 0;
+    this.fractionExp = 0;
   },
   divide: function() {
-      this.calculate();
-      this.operation = function(a, b) { return a / b; };
-      this.setCurrent(0, "");
-      this.fractionExp = 0; 
+    this.calculate();
+    this.operation = function(a, b) { return a / b; };
+    this.currentDisplay = this.current;
+    this.current = 0;
+    this.fractionExp = 0; 
   },
   clear: function() {
-      this.setCurrent(0, "");
-      this.fractionExp = 0; 
+    this.current = 0;
+    this.fractionExp = 0;
+    this.currentDisplay = 0;
+    this.updateDisplay();
   },
   allClear: function() {
-      this.clear();
-      this.total = 0;
-      this.operation = null;
-      this.fractionExp = 0;
+    this.clear();
+    this.total = 0;
+    this.operation = null;
   },
   calculate: function() {
     if (this.operation) {
@@ -58,28 +65,32 @@ Calculator.prototype = {
     } else {
       this.total = this.current;
     }
+    this.currentDisplay = this.total;
+    this.updateDisplay();
   },
   equals: function() {
     this.calculate();
-    this.updateDisplay(this.total);
   },
   digit: function(number) {
+    var num = null;
     if (this.fractionExp) {
-      this.setCurrent(this.current + (number / Math.pow(10, this.fractionExp)));
+      num = this.current + (number / Math.pow(10, this.fractionExp));
+      this.current = num;
       this.fractionExp = this.fractionExp + 1;
-    } else {            
-      this.setCurrent((this.current * 10) + number);
+      //this.setCurrentDisplay(num);
+    } else {           
+      num = (this.current * 10) + number; 
+      this.current = num;
+      //this.setCurrentDisplay(num);
     }
+    this.currentDisplay = this.current;
+    this.updateDisplay();
   },
   point: function() {
-      this.fractionExp = 1;
+    this.fractionExp = 1;
   },
-  setCurrent: function(value, text) {
-    this.current = value;
-    this.updateDisplay(typeof text == "undefined" ? this.current : text);
-  },
-  updateDisplay: function(value) {
-    this.displayEl.innerText = value;
+  updateDisplay: function() {
+    this.displayEl.innerText = this.currentDisplay;
   },
   initEvents: function() {
     var calc = this;
@@ -92,6 +103,7 @@ Calculator.prototype = {
         } else {
           calc.digit(number);
         }
+        console.log(calc);
       });
     });
   }
