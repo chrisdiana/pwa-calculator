@@ -6,4 +6,4 @@
 * 4 Themes
 * Responsive
 
-![PWA Calculator Screenshot](./img/screenshot.png)
+<img src="img/screenshot.png" alt="PWA Calculator Screenshot" width="300">
