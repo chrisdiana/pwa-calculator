@@ -5,9 +5,9 @@
 // }
 
 var previousTheme = null;
-var modal = document.getElementById("modal");
+var modal = document.getElementById('modal');
 var modalClose = document.getElementById('close-modal');
-var modalOpen = document.getElementById("calc-set-theme");
+var modalOpen = document.getElementById('calculator-set-theme');
 
 modalOpen.onclick = function() {
   modal.classList.add('show');
@@ -27,25 +27,22 @@ window.onclick = function(event) {
 }
 
 var themeVars = {
-  displayId: 'calc-display',
-  displayClass: 'calc-display',
-  buttonClass: 'calc-btn',
-  isWideButton: function(num) {
-    return (num === "0") ? true : false;
-  }
+  displayId: 'calculator-display',
+  displayClass: 'calculator-display',
+  keyClass: 'calculator-key'
 };
 
 function setTheme(theme) {
   var displayEl = document.getElementById(themeVars.displayId);
-  var buttonEls = document.querySelectorAll('.' + themeVars.buttonClass);
+  var keyEls = document.querySelectorAll('.' + themeVars.keyClass);
   
   displayEl.className = themeVars.displayClass + ' ' + theme;
   
-  buttonEls.forEach((button) => {
+  keyEls.forEach((key) => {
     if(previousTheme) {
-      button.classList.replace(previousTheme, theme);
+      key.classList.replace(previousTheme, theme);
     } else {
-      button.classList.add(theme);
+      key.classList.add(theme);
     }
   });
   
@@ -55,7 +52,7 @@ function setTheme(theme) {
 
 
 function init() {
-  var calc = new Calculator('calc-display', 'calc-btn');
+  var calc = new Calculator('.calculator-display', '.calculator-keys');
   calc.initEvents();
   
   var theme = window.localStorage.getItem('theme') || 'apple';

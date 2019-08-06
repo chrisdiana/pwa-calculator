@@ -28,14 +28,14 @@ body {
   justify-content: flex-start;
 }
 
-.calc-buttons {
+.calculator-keys {
   position: fixed;
   top: 0;
   bottom: 0;
   width: 100%;
 }
 
-.calc-display {
+.calculator-display {
   float: left;
   text-align: right;
   width: 100%;
@@ -48,7 +48,7 @@ body {
   font-weight: 100;
 }
 
-.calc-btn {
+.calculator-key {
   float: left;
   text-align: center;
   width: 25%;
@@ -58,7 +58,7 @@ body {
   border: 0.5px solid #777;
 }
 
-.calc-btn.wide {
+.calculator-key.wide {
   width: 50%;
 }
 
@@ -106,7 +106,7 @@ body {
   display: block;
 }
 
-#calc-set-theme {
+#calculator-set-theme {
 color: #909090;
   color: #fff;
 position: absolute;
@@ -117,7 +117,7 @@ z-index: 9;
 text-decoration: none;
 }
 
-#calc-set-theme:hover {
+#calculator-set-theme:hover {
   color: #fafafa;
 }
 
@@ -163,19 +163,19 @@ text-decoration: none;
   background: #333;
 }
 
-.calc-btn.nm.apple {
+.calculator-key.nm.apple {
   background: rgb(192, 192, 192);
   color: #1c1c1c;
   border: 0.5px solid #777;
 }
 
-.calc-btn.op.apple {
+.calculator-key.op.apple {
   background: #f5923e;
   color: #fafafa;
   border: 0.5px solid #777;
 }
 
-.calc-btn.sp.apple {
+.calculator-key.sp.apple {
   background: #949597;
   color: #fafafa;
   border: 0.5px solid #777;
@@ -191,17 +191,17 @@ text-decoration: none;
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff48a5', endColorstr='#ffcae5',GradientType=1 ); 
 }
 
-.calc-btn.nm.bubblegum {
+.calculator-key.nm.bubblegum {
   background: #ffcae5;
   border: 0.5px solid #ff48a4;
 }
 
-.calc-btn.op.bubblegum {
+.calculator-key.op.bubblegum {
   background: #ff77bc;
    border: 0.5px solid #ff48a4;
 }
 
-.calc-btn.sp.bubblegum {
+.calculator-key.sp.bubblegum {
   background: #ffaed7;
   border: 0.5px solid #ff48a4;
 }
@@ -217,15 +217,15 @@ text-decoration: none;
 
 }
 
-.calc-btn.nm.pink-pastel {
+.calculator-key.nm.pink-pastel {
   background: rgb(243,213,220);
 }
 
-.calc-btn.op.pink-pastel {
+.calculator-key.op.pink-pastel {
   background: rgb(237,201,210);
 }
 
-.calc-btn.sp.pink-pastel {
+.calculator-key.sp.pink-pastel {
   background: rgb(243,183,194);
 }
 
@@ -239,17 +239,17 @@ text-decoration: none;
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9994de', endColorstr='#f39eeb',GradientType=1 );
 }
 
-.calc-btn.nm.unicorn {
+.calculator-key.nm.unicorn {
   background: rgb(201,156,226);
   border: 0.5px solid rgb(153,148,222);
 }
 
-.calc-btn.op.unicorn {
+.calculator-key.op.unicorn {
   background: rgb(153,148,222);
   border: 0.5px solid rgb(153,148,222);
 }
 
-.calc-btn.sp.unicorn {
+.calculator-key.sp.unicorn {
   background: rgb(253,160,238);
   border: 0.5px solid rgb(153,148,222);
 }
