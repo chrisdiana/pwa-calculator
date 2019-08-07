@@ -1,8 +1,8 @@
 'use strict';
 
-// if ('serviceWorker' in navigator) {
-//   navigator.serviceWorker.register('sw.js');
-// }
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js');
+}
 
 var previousTheme = null;
 var modal = document.getElementById('modal');

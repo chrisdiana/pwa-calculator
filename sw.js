@@ -1,6 +1,6 @@
 'use strict';
 
-const CACHE_NAME = 'static-cache-v0.2';
+const CACHE_NAME = 'static-cache-v1';
 const FILES_TO_CACHE = [
   'index.html',
   'app.js',
