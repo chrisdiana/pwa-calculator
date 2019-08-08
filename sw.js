@@ -1,12 +1,13 @@
 'use strict';
 
-const CACHE_NAME = 'static-cache-v1';
+const CACHE_NAME = 'static-cache-v2';
 const FILES_TO_CACHE = [
   'index.html',
   'app.js',
   'calculator.js',
   'manifest.json',
   'style.css',
+  'themes.css',
   'img/check.svg',
   'img/icons/android-chrome-192x192.png',
   'img/icons/android-chrome-512x512.png',

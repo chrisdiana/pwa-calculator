@@ -5,34 +5,13 @@ if ('serviceWorker' in navigator) {
 }
 
 var previousTheme = null;
-var modal = document.getElementById('modal');
-var modalClose = document.getElementById('close-modal');
-var modalOpen = document.getElementById('calculator-set-theme');
-
-modalOpen.onclick = function() {
-  modal.classList.add('show');
-  modal.classList.remove('hide');
-}
-
-modalClose.onclick = function() {
-  modal.classList.remove('show');
-  modal.classList.add('hide');
-}
-
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.classList.remove('show');
-    modal.classList.add('hide');
-  }
-}
-
-var themeVars = {
-  displayId: 'calculator-display',
-  displayClass: 'calculator-display',
-  keyClass: 'calculator-key'
-};
 
 function setTheme(theme) {
+  var themeVars = {
+    displayId: 'calculator-display',
+    displayClass: 'calculator-display',
+    keyClass: 'calculator-key'
+  };
   var displayEl = document.getElementById(themeVars.displayId);
   var keyEls = document.querySelectorAll('.' + themeVars.keyClass);
   
@@ -50,13 +29,55 @@ function setTheme(theme) {
   window.localStorage.setItem('theme', theme);
 }
 
+(function() {
 
-function init() {
-  var calc = new Calculator('.calculator-display', '.calculator-keys');
-  calc.initEvents();
+  var iPhone = (navigator.userAgent.indexOf("iPhone OS") !== -1);
+  var iPad = (navigator.userAgent.indexOf("iPad") !== -1);
+
+  var mainContainer = document.getElementById('calculator');
+  var instructions = document.getElementById('screen-instructions');
+  var modal = document.getElementById('modal');
+  var modalClose = document.getElementById('close-modal');
+  var modalOpen = document.getElementById('calculator-set-theme');
+
+  function showInstructions() {
+    instructions.classList.add('show');
+    mainContainer.classList.add('hide'); 
+  }
+
+  function initEvents() {
+    modalOpen.onclick = function(e) {
+      modal.classList.add('show');
+      modal.classList.remove('hide');
+    }
+
+    modalClose.onclick = function(e) {
+      modal.classList.remove('show');
+      modal.classList.add('hide');
+    }
+
+    window.onclick = function(e) {
+      if (e.target == modal) {
+        modal.classList.remove('show');
+        modal.classList.add('hide');
+      }
+    }  
+  }
   
-  var theme = window.localStorage.getItem('theme') || 'apple';
-  setTheme(theme);
-}
+  function init() {
+    initEvents();
 
-init();
+    var calc = new Calculator('.calculator-display', '.calculator-keys');
+    calc.initEvents();
+    
+    var theme = window.localStorage.getItem('theme') || 'apple';
+    setTheme(theme);
+  }
+
+  if ((!window.navigator.standalone && (iPhone || iPad))) {
+    showInstructions();
+  } else {
+    init();
+  }
+
+})();

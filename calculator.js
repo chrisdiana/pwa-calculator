@@ -57,7 +57,6 @@ Calculator.prototype = {
 
   clear() {
     this.displayValue = '0';
-    this.currentOperator = null;
   },
 
   allclear() {
@@ -65,6 +64,14 @@ Calculator.prototype = {
     this.firstOperand = null;
     this.waitingForSecondOperand = false;
     this.currentOperator = null;
+  },
+
+  posneg() {
+    if(Math.sign(parseFloat(this.displayValue)) === 1) {
+      this.displayValue = '-' + this.displayValue;
+    } else {
+      this.displayValue = this.displayValue.replace('-', '');
+    }
   },
 
   updateDisplay() {

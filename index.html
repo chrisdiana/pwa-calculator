@@ -38,16 +38,17 @@
     
   <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" type="text/css" href="style.css">
+  <link rel="stylesheet" type="text/css" href="themes.css">
 </head>
 <body>
 
-  <div class="calculator">
+  <div id="calculator" class="calculator">
     <a id="calculator-set-theme" href="#">✎</a>
     <div class="calculator-keys">
       <div id="calculator-display" class="calculator-display"></div>
       <button class="calculator-key sp" data-type="allclear" value="all-clear">AC</button>
       <button class="calculator-key sp" data-type="clear" value="clear">C</button>
-      <button class="calculator-key sp">±</button>
+      <button class="calculator-key sp" data-type="posneg" value="posneg">±</button>
       <button class="calculator-key op" data-type="operator" value="/">&divide;</button>
 
       <button class="calculator-key nm" data-type="digit" value="7">7</button>
@@ -71,7 +72,18 @@
     </div>
   </div>
 
-  
+  <div id="screen-instructions" class="screen-instructions">
+    <div>
+      <img class="screen-instructions-icon" src="img/icons/apple-touch-icon.png" />
+      <h1>Calculator</h1>
+      <ol class="install-instructions">
+        <li>Open in Mobile Safari on your iPhone or iPad</li>
+        <li>Tap the 'Share' button</li>
+        <li>Choose 'Add to Home Screen'</li>
+      </ol>
+    </div>
+  </div>
+
   <div id="modal" class="modal">
     <div class="modal-content">
       <span id="close-modal" class="modal-close">&times;</span>
