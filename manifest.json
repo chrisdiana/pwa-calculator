@@ -2,6 +2,7 @@
   "name": "Calculator",
   "short_name": "Calculator",
   "description": "A calculator application",
+  "categories": ["utilities", "tools"],
   "icons": [{
     "src": "img/icons/icon-128x128.png",
       "sizes": "128x128",
