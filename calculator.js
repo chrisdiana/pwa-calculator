@@ -3,6 +3,7 @@ var Calculator = function(displayClass, keysClass) {
   this.firstOperand = null;
   this.waitingForSecondOperand = false;
   this.currentOperator = null;
+  this.currentOperatorClass = 'op-active';
   this.display = document.querySelector(displayClass);
   this.keys = document.querySelector(keysClass);
   this.calculate = {
@@ -78,8 +79,27 @@ Calculator.prototype = {
     this.display.innerText = this.displayValue;
   },
 
+  isOperatorBtn(el) {
+    var isOp = false;
+    if(typeof(el) === "object") {
+      if(el.getAttribute('data-type') == 'operator' && el.innerText !== '=') {
+        isOp = true;
+      }
+    }
+    return isOp;
+  },
+
   initEvents() {
     this.keys.addEventListener('click', (e) => {
+      for(var i in this.keys.children) {
+        var el = this.keys.children[i];
+        if(this.isOperatorBtn(el)) {
+          el.classList.remove(this.currentOperatorClass);
+        }
+      }
+      if(this.isOperatorBtn(e.target)) {
+        e.target.classList.add(this.currentOperatorClass);
+      }
       this[e.target.getAttribute('data-type')](e.target.value);
       this.updateDisplay();
     });

@@ -22,6 +22,7 @@ body {
   align-content: stretch;
   align-items: stretch;
   background: #282828;
+  background: #ebebeb;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -66,14 +67,14 @@ body {
 .modal {
   display: none;
   position: fixed;
-  z-index: 1; 
+  z-index: 1;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto; 
-  background-color: rgb(0,0,0); 
-  background-color: rgba(0,0,0,0.4); 
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
 }
 
 .modal-content {
@@ -108,18 +109,22 @@ body {
 }
 
 #calculator-set-theme {
-color: #909090;
+  color: #909090;
   color: #fff;
-position: absolute;
-top: 5px;
-left: 10px;
-font-size: 24px;
-z-index: 9;
-text-decoration: none;
+  position: absolute;
+  top: 5px;
+  left: 10px;
+  font-size: 24px;
+  z-index: 9;
+  text-decoration: none;
 }
 
 #calculator-set-theme:hover {
   color: #fafafa;
+}
+
+.theme-title {
+  color: #777;
 }
 
 .radio div {
@@ -166,7 +171,7 @@ text-decoration: none;
 .theme {
   padding: 10px;
   width: 100px;
-  white-space: nowrap; 
+  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }

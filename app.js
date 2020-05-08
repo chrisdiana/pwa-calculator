@@ -14,9 +14,9 @@ function setTheme(theme) {
   };
   var displayEl = document.getElementById(themeVars.displayId);
   var keyEls = document.querySelectorAll('.' + themeVars.keyClass);
-  
+
   displayEl.className = themeVars.displayClass + ' ' + theme;
-  
+
   keyEls.forEach((key) => {
     if(previousTheme) {
       key.classList.replace(previousTheme, theme);
@@ -24,7 +24,7 @@ function setTheme(theme) {
       key.classList.add(theme);
     }
   });
-  
+
   previousTheme = theme;
   window.localStorage.setItem('theme', theme);
 }
@@ -42,7 +42,7 @@ function setTheme(theme) {
 
   function showInstructions() {
     instructions.classList.add('show');
-    mainContainer.classList.add('hide'); 
+    mainContainer.classList.add('hide');
   }
 
   function initEvents() {
@@ -61,15 +61,15 @@ function setTheme(theme) {
         modal.classList.remove('show');
         modal.classList.add('hide');
       }
-    }  
+    }
   }
-  
+
   function init() {
     initEvents();
 
     var calc = new Calculator('.calculator-display', '.calculator-keys');
     calc.initEvents();
-    
+
     var theme = window.localStorage.getItem('theme') || 'apple';
     setTheme(theme);
   }
