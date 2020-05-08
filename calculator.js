@@ -100,7 +100,9 @@ Calculator.prototype = {
       if(this.isOperatorBtn(e.target)) {
         e.target.classList.add(this.currentOperatorClass);
       }
-      this[e.target.getAttribute('data-type')](e.target.value);
+      if(this[e.target.getAttribute('data-type')]) {
+        this[e.target.getAttribute('data-type')](e.target.value);
+      }
       this.updateDisplay();
     });
     this.updateDisplay();

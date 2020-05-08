@@ -48,6 +48,7 @@ body {
   padding: 0 1.5rem;
   color: #fafafa;
   font-weight: 100;
+  overflow-x: scroll;
 }
 
 .calculator-key {
