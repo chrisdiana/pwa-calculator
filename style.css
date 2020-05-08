@@ -22,7 +22,6 @@ body {
   align-content: stretch;
   align-items: stretch;
   background: #282828;
-  background: #ebebeb;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
