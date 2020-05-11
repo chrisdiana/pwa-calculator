@@ -2,11 +2,11 @@
 
 /* Apple */
 .apple {
-background: #f5923e;
-background: -moz-linear-gradient(45deg,  #f5923e 0%, #333333 61%);
-background: -webkit-linear-gradient(45deg,  #f5923e 0%,#333333 61%);
-background: linear-gradient(45deg,  #f5923e 0%,#333333 61%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5923e', endColorstr='#333333',GradientType=1 );
+  background: #f5923e;
+  background: -moz-linear-gradient(45deg,  #f5923e 0%, #333333 61%);
+  background: -webkit-linear-gradient(45deg,  #f5923e 0%,#333333 61%);
+  background: linear-gradient(45deg,  #f5923e 0%,#333333 61%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5923e', endColorstr='#333333',GradientType=1 );
 }
 
 .calculator-display.apple {
@@ -26,9 +26,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5923e', end
 }
 
 .calculator-key.op.op-active.apple {
-  border: 1.5px solid #4f4f4f;
-  border-bottom: 2.5px solid #4f4f4f;
-  border-right: 2.5px solid #4f4f4f;
+  border: 2px solid #4f4f4f;
 }
 
 .calculator-key.sp.apple {
@@ -58,9 +56,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5923e', end
 }
 
 .calculator-key.op.op-active.bubblegum {
-  border: 1.5px solid #ff2995;
-  border-bottom: 2.5px solid #ff2995;
-  border-right: 2.5px solid #ff2995;
+  border: 2px solid #ff2995;
 }
 
 .calculator-key.sp.bubblegum {
@@ -88,9 +84,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5923e', end
 }
 
 .calculator-key.op.op-active.pink-pastel {
-  border: 1.5px solid #f29fac;
-  border-bottom: 2.5px solid #f29fac;
-  border-right: 2.5px solid #f29fac;
+  border: 2px solid #f29fac;
 }
 
 .calculator-key.sp.pink-pastel {
@@ -118,9 +112,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5923e', end
 }
 
 .calculator-key.op.op-active.unicorn {
-  border: 1.5px solid rgb(253,160,238);
-  border-bottom: 2.5px solid rgb(253,160,238);
-  border-right: 2.5px solid rgb(253,160,238);
+  border: 2px solid rgb(253,160,238);
 }
 
 .calculator-key.sp.unicorn {
@@ -153,9 +145,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f5923e', end
 }
 
 .calculator-key.op.op-active.bmb {
-  border: 1.5px solid rgb(28,31,36);
-  border-bottom: 2.5px solid rgb(28,31,36);
-  border-right: 2.5px solid rgb(28,31,36);
+  border: 2px solid rgb(28,31,36);
 }
 
 .calculator-key.sp.bmb {
@@ -184,9 +174,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1d3f55', end
 }
 
 .calculator-key.op.op-active.ti {
-  border: 1.5px solid rgb(204, 204, 204);
-  border-bottom: 2.5px solid rgb(204, 204, 204);
-  border-right: 2.5px solid rgb(204, 204, 204);
+  border: 2px solid rgb(204, 204, 204);
 }
 
 .calculator-key.op.ti {
@@ -222,9 +210,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1d3f55', end
 }
 
 .calculator-key.op.op-active.dark {
-  border: 1.5px solid rgb(204, 204, 204);
-  border-bottom: 2.5px solid rgb(204, 204, 204);
-  border-right: 2.5px solid rgb(204, 204, 204);
+  border: 2px solid rgb(204, 204, 204);
 }
 
 .calculator-key.sp.dark {
@@ -258,9 +244,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1d3f55', end
 }
 
 .calculator-key.op.op-active.light {
-  border: 1.5px solid rgb(204, 204, 204);
-  border-bottom: 2.5px solid rgb(204, 204, 204);
-  border-right: 2.5px solid rgb(204, 204, 204);
+  border: 2px solid rgb(204, 204, 204);
 }
 
 .calculator-key.sp.light {
