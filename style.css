@@ -36,10 +36,6 @@ body {
   width: 100%;
 }
 
-button:focus{
-  outline: none;
-}
-
 .calculator-display {
   float: left;
   text-align: right;
@@ -62,6 +58,10 @@ button:focus{
   font-size: 6vh;
   font-weight: 300;
   border: 0.5px solid #777;
+}
+
+button.calculator-key:focus {
+  outline: none;
 }
 
 .calculator-key.wide {
