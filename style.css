@@ -36,6 +36,10 @@ body {
   width: 100%;
 }
 
+button:focus{
+  outline: none;
+}
+
 .calculator-display {
   float: left;
   text-align: right;
