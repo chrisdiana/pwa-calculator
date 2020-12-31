@@ -27,6 +27,10 @@ body {
   flex-wrap: nowrap;
   justify-content: flex-start;
   color: #fff;
+  -webkit-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .calculator-keys {
