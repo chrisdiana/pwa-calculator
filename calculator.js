@@ -80,6 +80,9 @@ Calculator.prototype = {
 
   updateDisplay() {
     this.display.innerText = this.displayValue;
+    // always stick to the right when number overflows
+    const leftPos = this.display.scrollWidth;
+    this.display.scrollLeft = leftPos;
   },
 
   isOperatorBtn(el) {
