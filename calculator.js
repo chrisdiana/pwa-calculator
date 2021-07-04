@@ -17,7 +17,7 @@ var Calculator = function (displayClass, keysClass) {
 
 Calculator.prototype = {
   operator(nextOperator) {
-    const inputValue = parseFloat(this.displayValue);
+    const inputValue = this.displayValue;
 
     if (this.currentOperator && this.waitingForSecondOperand) {
       this.currentOperator = nextOperator;
