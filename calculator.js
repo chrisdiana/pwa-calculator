@@ -1,26 +1,25 @@
-var Calculator = function(displayClass, keysClass) {
-  this.displayValue = '0';
+var Calculator = function (displayClass, keysClass) {
+  this.displayValue = "0";
   this.firstOperand = null;
   this.waitingForSecondOperand = false;
   this.currentOperator = null;
-  this.currentOperatorClass = 'op-active';
+  this.currentOperatorClass = "op-active";
   this.display = document.querySelector(displayClass);
   this.keys = document.querySelector(keysClass);
   this.calculate = {
-    '/': (a, b) => (a / b),
-    '*': (a, b) => (a * b),
-    '+': (a, b) => (a + b),
-    '-': (a, b) => (a - b),
-    '=': (a, b) => b
+    "/": (a, b) => new Decimal(a).dividedBy(new Decimal(b)).toString(),
+    "*": (a, b) => new Decimal(a).times(new Decimal(b)).toString(),
+    "+": (a, b) => new Decimal(a).plus(new Decimal(b)).toString(),
+    "-": (a, b) => new Decimal(a).minus(new Decimal(b)).toString(),
+    "=": (a, b) => b,
   };
 };
 
 Calculator.prototype = {
-
   operator(nextOperator) {
-    const inputValue = parseFloat(this.displayValue);
+    const inputValue = this.displayValue;
 
-    if (this.currentOperator && this.waitingForSecondOperand)  {
+    if (this.currentOperator && this.waitingForSecondOperand) {
       this.currentOperator = nextOperator;
       return;
     }
@@ -29,7 +28,10 @@ Calculator.prototype = {
       this.firstOperand = inputValue;
     } else if (this.currentOperator) {
       const currentValue = this.firstOperand || 0;
-      const result = this.calculate[this.currentOperator](currentValue, inputValue);
+      const result = this.calculate[this.currentOperator](
+        currentValue,
+        inputValue
+      );
       this.displayValue = String(result);
       this.firstOperand = result;
     }
@@ -43,7 +45,8 @@ Calculator.prototype = {
       this.displayValue = digit;
       this.waitingForSecondOperand = false;
     } else {
-      this.displayValue = this.displayValue === '0' ? digit : this.displayValue + digit;
+      this.displayValue =
+        this.displayValue === "0" ? digit : this.displayValue + digit;
     }
   },
 
@@ -57,32 +60,35 @@ Calculator.prototype = {
   },
 
   clear() {
-    this.displayValue = '0';
+    this.displayValue = "0";
   },
 
   allclear() {
-    this.displayValue = '0';
+    this.displayValue = "0";
     this.firstOperand = null;
     this.waitingForSecondOperand = false;
     this.currentOperator = null;
   },
 
   posneg() {
-    if(Math.sign(parseFloat(this.displayValue)) === 1) {
-      this.displayValue = '-' + this.displayValue;
+    if (Math.sign(parseFloat(this.displayValue)) === 1) {
+      this.displayValue = "-" + this.displayValue;
     } else {
-      this.displayValue = this.displayValue.replace('-', '');
+      this.displayValue = this.displayValue.replace("-", "");
     }
   },
 
   updateDisplay() {
     this.display.innerText = this.displayValue;
+    // always stick to the right when number overflows
+    const leftPos = this.display.scrollWidth;
+    this.display.scrollLeft = leftPos;
   },
 
   isOperatorBtn(el) {
     var isOp = false;
-    if(typeof(el) === "object") {
-      if(el.getAttribute('data-type') == 'operator' && el.innerText !== '=') {
+    if (typeof el === "object") {
+      if (el.getAttribute("data-type") == "operator" && el.innerText !== "=") {
         isOp = true;
       }
     }
@@ -90,21 +96,21 @@ Calculator.prototype = {
   },
 
   initEvents() {
-    this.keys.addEventListener('click', (e) => {
-      for(var i in this.keys.children) {
+    this.keys.addEventListener("click", (e) => {
+      for (var i in this.keys.children) {
         var el = this.keys.children[i];
-        if(this.isOperatorBtn(el)) {
+        if (this.isOperatorBtn(el)) {
           el.classList.remove(this.currentOperatorClass);
         }
       }
-      if(this.isOperatorBtn(e.target)) {
+      if (this.isOperatorBtn(e.target)) {
         e.target.classList.add(this.currentOperatorClass);
       }
-      if(this[e.target.getAttribute('data-type')]) {
-        this[e.target.getAttribute('data-type')](e.target.value);
+      if (this[e.target.getAttribute("data-type")]) {
+        this[e.target.getAttribute("data-type")](e.target.value);
       }
       this.updateDisplay();
     });
     this.updateDisplay();
-  }
+  },
 };
