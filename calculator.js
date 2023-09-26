@@ -7,10 +7,10 @@ var Calculator = function(displayClass, keysClass) {
   this.display = document.querySelector(displayClass);
   this.keys = document.querySelector(keysClass);
   this.calculate = {
-    '/': (a, b) => (a / b),
-    '*': (a, b) => (a * b),
-    '+': (a, b) => (a + b),
-    '-': (a, b) => (a - b),
+    '/': (a, b) => a.div(b).valueOf(),
+    '*': (a, b) => a.times(b).valueOf(),
+    '+': (a, b) => a.add(b).valueOf(),
+    '-': (a, b) => a.minus(b).valueOf(),
     '=': (a, b) => b
   };
 };
@@ -18,7 +18,7 @@ var Calculator = function(displayClass, keysClass) {
 Calculator.prototype = {
 
   operator(nextOperator) {
-    const inputValue = parseFloat(this.displayValue);
+    const inputValue = Big(this.displayValue);
 
     if (this.currentOperator && this.waitingForSecondOperand)  {
       this.currentOperator = nextOperator;
@@ -28,7 +28,7 @@ Calculator.prototype = {
     if (this.firstOperand == null) {
       this.firstOperand = inputValue;
     } else if (this.currentOperator) {
-      const currentValue = this.firstOperand || 0;
+      const currentValue = Big(this.firstOperand) || Big(0);
       const result = this.calculate[this.currentOperator](currentValue, inputValue);
       this.displayValue = String(result);
       this.firstOperand = result;
@@ -68,11 +68,7 @@ Calculator.prototype = {
   },
 
   posneg() {
-    if(Math.sign(parseFloat(this.displayValue)) === 1) {
-      this.displayValue = '-' + this.displayValue;
-    } else {
-      this.displayValue = this.displayValue.replace('-', '');
-    }
+    this.displayValue = Big(this.displayValue).neg().valueOf();
   },
 
   updateDisplay() {
